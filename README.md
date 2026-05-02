@@ -4,14 +4,14 @@ This project is a book forum application. The application presents the user with
 
 
 ## How to run the app (setup steps)
-## Prerequisites
+### Prerequisites
 
 Before getting started, make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/en/download) (v18 or higher recommended)
 - MySQL (or MySQL Workbench)
 
-## Database Setup
+### Database Setup
 Open MySQL Workbench or a terminal and run the schema file to create the database and tables.
 
 **CMD or WSL:**
