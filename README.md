@@ -68,7 +68,7 @@ nodemon server.js
 npm run dev
 ```
 
-The app will be running at `http://localhost:5173` by default.
+The app will be running at `http://localhost:3000` by default.
 
 ## User Information
 
