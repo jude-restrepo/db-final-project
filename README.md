@@ -39,6 +39,7 @@ DB_PASSWORD=yourpassword
 DB_NAME=yourdbname
 JWT_SECRET=yoursecretkey
 ```
+A JWT secret (or secret key) is a cryptographically strong string used to sign and verify JSON Web Tokens (JWTs). This variable is used for user login logic and can be an arbitrary string. While in real life applications using a secret that is at least 32 bytes (256 bits) long and composed of random characters is recommended, any string (like your name) will work here.
 
 ### Installation
 
