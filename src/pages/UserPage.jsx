@@ -52,6 +52,7 @@ const UserPage = () => {
                         <div>
                             <p className='text-lg font-semibold text-parchment-900'>{user.username}</p>
                             <p className='text-sm text-parchment-400'>Member since {formatDate(user.created_on)}</p>
+                            <p className='text-sm text-parchment-400'>Role: {user.role.toUpperCase()}</p>
                         </div>
                     </div>
 

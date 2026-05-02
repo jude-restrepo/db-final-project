@@ -1,5 +1,5 @@
 import {toast} from "react-toastify";
-import {useRevalidator} from "react-router-dom";
+import {Link, useRevalidator} from "react-router-dom";
 import {useAuth} from "../context/AuthContext";
 import {useState} from "react";
 
@@ -42,7 +42,7 @@ const PostCard = ({ post, deletePost, updatePost}) => {
         <div className='bg-parchment-50 border border-parchment-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200'>
             <div className='px-6 py-4 border-b border-parchment-100'>
                 <p className='text-xs text-parchment-400'>{dateString}</p>
-                <p className='text-sm font-medium text-parchment-600'>{post.username}</p>
+                <Link to={`/users/${post.username}/account-info`} className='text-sm font-medium text-parchment-600'>{post.username}</Link>
             </div>
             {updatePostContent === null ? <div className='px-6 py-4'>
                 <p className='text-sm text-parchment-700 leading-relaxed mb-4'>{post.content}</p>

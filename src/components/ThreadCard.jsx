@@ -26,6 +26,7 @@ const ThreadCard = ({ thread }) => {
             </span>
                 </div>
                 <p className='text-xs text-parchment-400'>{dateString}</p>
+                <Link to={`/users/${thread.username}/account-info`} className='text-sm font-medium text-parchment-600'>{thread.username}</Link>
             </div>
             <div className='px-6 py-4'>
                 <p className='text-sm text-parchment-700 leading-relaxed mb-4 line-clamp-3'>

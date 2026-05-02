@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLoaderData, useNavigate, useRevalidator } from 'react-router-dom';
+import {Link, useLoaderData, useNavigate, useRevalidator} from 'react-router-dom';
 import PostCard from '../components/PostCard';
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -39,9 +39,9 @@ const ThreadPage = ({ closeThread, addPost, deletePost, updatePost }) => {
                     <div className='min-w-0 flex-1'>
                         <h1 className='text-2xl font-bold text-parchment-900 mb-2 break-all'>{thread.title}</h1>
                         <p className='text-parchment-700 leading-relaxed '>{thread.content}</p>
-                        <p className='text-xs text-parchment-400 mt-3'>
+                        <Link to={`/users/${thread.username}/account-info`} className='text-xs text-parchment-400 mt-3'>
                             Posted by <span className='font-medium text-parchment-600'>{thread.username}</span>
-                        </p>
+                        </Link>
                     </div>
                     {isClosed
                         ? <span className='shrink-0 text-xs font-medium px-3 py-1 rounded-full bg-parchment-200 text-parchment-600 border border-parchment-300'>
