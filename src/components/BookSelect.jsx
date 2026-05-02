@@ -88,7 +88,7 @@ const BookSelect = ({ selected, onChange }) => {
             {/* Dropdown */}
             {open && filtered.length > 0 && (
                 <ul className="absolute z-10 mt-1 w-full bg-parchment-50 border border-parchment-200 rounded-lg shadow-md max-h-48 overflow-y-auto">
-                    {filtered.map(book => (
+                    {filtered.sort((a, b) => a.title.localeCompare(b.title)).map(book => (
                         <li
                             key={book.book_id}
                             onClick={() => toggleBook(book)}
