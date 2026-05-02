@@ -1,6 +1,6 @@
 # Project description
 
-This project is a book forum application. The application presents the user with communities. Within each community are multiple threads and within each thread are multiple posts. A normal user can create threads and posts, 
+This project is a book forum application. The application presents the user with communities. Within each community are multiple threads and within each thread are multiple posts. A normal user can create threads and posts and interact with other users' threads by posting.
 
 
 ## How to run the app (setup steps)
