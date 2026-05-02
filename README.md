@@ -3,7 +3,7 @@
 This project is a book forum application. The application presents the user with communities. Within each community are multiple threads and within each thread are multiple posts. A normal user can create threads and posts and interact with other users' threads by posting.
 
 
-## How to run the app (setup steps)
+# Setup
 ### Prerequisites
 
 Before getting started, make sure you have the following installed:
@@ -70,7 +70,7 @@ npm run dev
 
 The app will be running at `http://localhost:3000` by default.
 
-## User Information
+### User Information
 
 While the database has no special users, it is helpful for testing to know the information of a few user records stored in the database. Only admins can create, edit and delete communities.
 
