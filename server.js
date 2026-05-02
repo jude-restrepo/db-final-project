@@ -109,7 +109,8 @@ app.get('/api/communities', asyncHandler(async (req, res) => {
 
 app.get('/api/communities/hot', asyncHandler(async (req, res) => {
     // Complex Query #5
-    const [rows] = await db.query('SELECT c.*, (COUNT(DISTINCT(t.thread_id)) + COUNT(DISTINCT(p.post_id))) AS total ' +
+    const [rows] = await db.query('SELECT c.*, ' +
+        '(COUNT(DISTINCT(t.thread_id)) + COUNT(DISTINCT(p.post_id))) AS total ' +
         'FROM community AS c ' +
         'LEFT JOIN thread AS t ON c.community_name = t.community_name ' +
         'LEFT JOIN post AS p ON t.thread_id = p.thread_id ' +
@@ -126,8 +127,10 @@ app.get('/api/communities/hot', asyncHandler(async (req, res) => {
 
 app.get('/api/communities/unanswered', asyncHandler(async (req, res) => {
     // Complex Query #4
-    const [rows] = await db.query('SELECT c.*, COUNT(DISTINCT(t.thread_id)) AS unanswered_threads ' +
-        'FROM community AS c LEFT JOIN thread AS t ON c.community_name = t.community_name ' +
+    const [rows] = await db.query('SELECT c.*, ' +
+        'COUNT(DISTINCT(t.thread_id)) AS unanswered_threads ' +
+        'FROM community AS c LEFT JOIN thread AS t ' +
+        'ON c.community_name = t.community_name ' +
         'WHERE NOT EXISTS (' +
         'SELECT 1 FROM post WHERE thread_id = t.thread_id' +
         ')' +
@@ -139,7 +142,8 @@ app.get('/api/communities/unanswered', asyncHandler(async (req, res) => {
 app.get('/api/communities/majority-genre', asyncHandler(async (req, res) => {
 
     // Complex Query #3
-    const [rows] = await db.query('SELECT c.community_name, GROUP_CONCAT(DISTINCT g.genre_name) AS highest_genres ' +
+    const [rows] = await db.query('SELECT c.community_name, ' +
+        'GROUP_CONCAT(DISTINCT g.genre_name) AS highest_genres ' +
         'FROM community AS c ' +
         'JOIN genre_counts AS g ON c.community_name = g.community_name ' +
         'JOIN max_per_community AS m ON g.community_name = m.community_name ' +
@@ -233,7 +237,9 @@ app.post('/api/threads', asyncHandler(async (req, res) => {
         await conn.beginTransaction();
 
         const [result] = await conn.query(
-            'INSERT INTO thread (community_name, title, content, username, created_on) VALUES (?, ?, ?, ?, NOW())',
+            'INSERT INTO thread (community_name, title, content, ' +
+            'username, created_on) ' +
+            'VALUES (?, ?, ?, ?, NOW())',
             [community_name, title, content, username]
         );
 

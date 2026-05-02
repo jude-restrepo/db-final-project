@@ -4,13 +4,13 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(() => {
-        return JSON.parse(localStorage.getItem('currentUser')) || null
+        return JSON.parse(sessionStorage.getItem('currentUser')) || null
     });
     const [token, setToken] = useState(() => {
-        return localStorage.getItem('token') || null
+        return sessionStorage.getItem('token') || null
     });
     const [role, setRole] = useState(() => {
-        return JSON.parse(localStorage.getItem('role')) || null
+        return JSON.parse(sessionStorage.getItem('role')) || null
     })
 
     const login = async (user, token) => {
@@ -22,18 +22,18 @@ export const AuthProvider = ({ children }) => {
         setToken(token);
         setRole(userRole)
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        localStorage.setItem('role', JSON.stringify(userRole));
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        sessionStorage.setItem('role', JSON.stringify(userRole));
     }
 
     const logout = () => {
         setCurrentUser(null);
         setToken(null);
         setRole(null);
-        localStorage.removeItem('token');
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('role');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('role');
     }
 
     return (
