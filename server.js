@@ -308,6 +308,21 @@ app.post('/api/posts', asyncHandler(async (req, res) => {
     res.json({ status: 'success', results: result });
 }));
 
+app.put('/api/posts', asyncHandler(async (req, res) => {
+    const { post_id, content } = req.body;
+    const id = parseInt(post_id)
+
+    if (!isNonEmptyString(content))
+        return res.status(400).json({ status: 'error', message: 'Updated content cannot be empty' });
+
+    const [result] = await db.query(
+        'UPDATE post SET content = ? WHERE post_id = ?',
+        [content, id]
+    )
+
+    res.json({ status: 'success', results: result });
+}))
+
 app.delete('/api/posts/:post_id', asyncHandler(async (req, res) => {
     const { post_id } = req.params;
 

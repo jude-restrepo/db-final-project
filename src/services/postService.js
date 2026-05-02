@@ -11,3 +11,11 @@ export async function deletePost(post_id) {
         method: 'DELETE'
     })
 }
+
+export async function updatePost(post) {
+    await fetch(`/api/posts`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(post)
+    })
+}

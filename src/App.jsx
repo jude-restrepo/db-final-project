@@ -1,7 +1,7 @@
 import { addUser, loginUser } from './services/authService';
 import { addCommunity, deleteCommunity, updateCommunity } from './services/communityService';
 import { addThread, closeThread } from './services/threadService';
-import { addPost, deletePost } from './services/postService';
+import { addPost, deletePost, updatePost } from './services/postService';
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider, useNavigate} from "react-router-dom";
 import LoginPage from "./pages/LoginPage.jsx";
 import CreateUserPage from "./pages/CreateUserPage.jsx";
@@ -41,7 +41,7 @@ const App = () => {
                     <Route path='/add-community' element={<AddCommunityPage addCommunitySubmit={addCommunity} />} />
                     <Route path='/edit-community/:community_name' element={<UpdateCommunityPage updateCommunitySubmit={updateCommunity} />} loader={communityLoader} />
                     <Route path='/communities/:community_name' element={<CommunityPage deleteCommunity={deleteCommunity} addThread={addThread}/>} loader={communityLoader} />
-                    <Route path='/threads/:thread_id' element={<ThreadPage closeThread={closeThread} addPost={addPost} deletePost={deletePost}/>} loader={threadLoader}/>
+                    <Route path='/threads/:thread_id' element={<ThreadPage closeThread={closeThread} addPost={addPost} deletePost={deletePost} updatePost={updatePost}/>} loader={threadLoader}/>
                     <Route path='/users/:username/account-info' element={<UserPage />}/>
                     <Route path='*' element={<NotFoundPage />} />
                 </Route>

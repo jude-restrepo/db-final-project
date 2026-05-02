@@ -4,7 +4,7 @@ import PostCard from '../components/PostCard';
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext.jsx';
 
-const ThreadPage = ({ closeThread, addPost, deletePost }) => {
+const ThreadPage = ({ closeThread, addPost, deletePost, updatePost }) => {
     const [newPostContent, setNewPostContent] = useState('');
     const { thread, posts } = useLoaderData();
     const navigate = useNavigate();
@@ -93,7 +93,7 @@ const ThreadPage = ({ closeThread, addPost, deletePost }) => {
                     ? <p className='text-sm text-parchment-400 text-center py-8'>No replies yet. Be the first to reply!</p>
                     : <div className='space-y-3'>
                         {posts.map((post) => (
-                            <PostCard key={post.post_id} post={post} deletePost={deletePost} />
+                            <PostCard key={post.post_id} post={post} deletePost={deletePost} updatePost={updatePost}/>
                         ))}
                     </div>
                 }

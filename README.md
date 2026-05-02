@@ -1,16 +1,41 @@
-# React + Vite
+# Project description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a book forum application. The application presents the user with communities. Within each community are multiple threads and within each thread are multiple posts. A normal user can create threads and posts, 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## How to run the app (setup steps)
 
-## React Compiler
+1. Make sure you have Vite and Node installed
+2. Start the server with node and run Vite using the following commands. Click on the link Vite provides in the console to go to the app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+nodemon .\server.js
+npm run dev
+``` 
 
-## Expanding the ESLint configuration
+in the project root.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How to set up the database (schema + seed data)
+
+1. Make sure MySQL is running
+2. Run the schema file to create the database and tables and seed the data:
+
+```bash
+mysql -u root -p < db/schema.sql
+```
+
+Or open `db/schema.sql` in MySQL Workbench and execute it.
+
+See [db/schema.sql](./db/schema.sql) for the full schema.
+
+## User Information
+
+While the database has no special users, it is helpful for testing to know the information of a few user records stored in the database. Only admins can create, edit and delete communities.
+
+username: "Jude",
+password: "Jude",
+role: "admin"
+
+username: "Isaiah",
+password: "Isaiah",
+role: "pleb" (not an admin)
