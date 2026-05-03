@@ -37,7 +37,7 @@ const CommunityPage = ({ deleteCommunity, addThread }) => {
     }
 
     return (
-        <>
+        <div className='max-w-7xl mx-auto px-6 py-8'>
             {/* Create Thread Form */}
             <div className='my-6'>
                 <div className='bg-parchment-50 rounded-xl shadow-sm border border-parchment-200 p-6 mb-3'>
@@ -157,7 +157,7 @@ const CommunityPage = ({ deleteCommunity, addThread }) => {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

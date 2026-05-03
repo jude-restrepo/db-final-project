@@ -133,8 +133,7 @@ app.get('/api/communities/unanswered', asyncHandler(async (req, res) => {
         'ON c.community_name = t.community_name ' +
         'WHERE NOT EXISTS (' +
         'SELECT 1 FROM post WHERE thread_id = t.thread_id' +
-        ')' +
-        'GROUP BY c.community_name ORDER BY unanswered_threads DESC');
+        ') GROUP BY c.community_name HAVING unanswered_threads > 0 ORDER BY unanswered_threads DESC');
 
     res.json({ status: 'success', communities: rows });
 }));
@@ -212,7 +211,8 @@ app.get('/api/communities/:community_name/threads', asyncHandler(async (req, res
         'LEFT JOIN refers_book AS r on t.thread_id = r.thread_id ' +
         'LEFT JOIN book as b on r.book_id = b.book_id ' +
         'WHERE t.community_name = ? ' +
-        'GROUP BY t.thread_id',
+        'GROUP BY t.thread_id ' +
+        'ORDER BY t.created_on DESC',
         [community_name]
     );
 
@@ -291,7 +291,7 @@ app.get('/api/threads/:thread_id/posts', asyncHandler(async (req, res) => {
     );
 
     const [posts] = await db.query(
-        `SELECT * FROM post WHERE thread_id = ?`,
+        `SELECT * FROM post WHERE thread_id = ? ORDER BY created_on DESC`,
         [thread_id]
     );
 

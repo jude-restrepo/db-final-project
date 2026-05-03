@@ -6,7 +6,7 @@ const UpdateCommunityPage = ({ updateCommunitySubmit }) => {
     const {community} = useLoaderData();
 
     const [name, setName] = useState(community.community_name);
-    const [desc, setDesc] = useState(community.community_description);
+    const [desc, setDesc] = useState(community.description);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
